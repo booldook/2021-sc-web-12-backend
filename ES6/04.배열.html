@@ -1,0 +1,101 @@
+<button onclick="">눌러</button>
+
+<script>
+/*
+배열: index를 부여해서 자료를 모아놓은 곳
+학습: 배열이 가지고 있는 Method(함수)를 배우는 것
+concat: ƒ concat()
+constructor: ƒ Array()
+copyWithin: ƒ copyWithin()
+entries: ƒ entries()
+every: ƒ every()
+fill: ƒ fill()
+filter: ƒ filter()
+find: ƒ find()
+findIndex: ƒ findIndex()
+flat: ƒ flat()
+flatMap: ƒ flatMap()
+forEach: ƒ forEach()
+includes: ƒ includes()
+indexOf: ƒ indexOf()
+join: ƒ join()
+keys: ƒ keys()
+lastIndexOf: ƒ lastIndexOf()
+length: 0
+map: ƒ map()
+pop: ƒ pop()
+push: ƒ push()
+reduce: ƒ reduce()
+reduceRight: ƒ reduceRight()
+reverse: ƒ reverse()
+shift: ƒ shift()
+slice: ƒ slice()
+some: ƒ some()
+sort: ƒ sort()
+splice: ƒ splice()
+toLocaleString: ƒ toLocaleString()
+toString: ƒ toString()
+unshift: ƒ unshift()
+values: ƒ values()
+*/
+
+// 배열 선언
+const arr = [];
+const arr2 = new Array();
+const arr3 = [1, 2, 3];
+const arr4 = new Array(1, 2, 3);
+console.log(arr, arr2, arr3, arr4);
+
+// 객체 선언
+const obj = {};
+const obj2 = new Object();
+console.log(obj, obj2);
+
+// 그런데 객체는 두가지 형태로 나뉜다.
+// 1. Literal Object - 자료를 저장
+// 2. Constructor Object - 객체를 만드는 객체
+
+// Literal 객체는 JSON(JavaScript Object Notation)이다.
+const obj3 = {
+	id: 1,
+	users: [
+		{id: 1, name: '홍길동'},
+		{id: 2, name: '홍길순'},
+	]
+}
+console.log(obj3);	// JS Object
+const obj3Txt = JSON.stringify(obj3);
+console.log(obj3Txt);	// JSON
+const obj4 = JSON.parse(obj3Txt);
+console.log(obj4); // JS Object
+
+// Literal객체를 복제해서 쓸수 있는 객체가 Constructor 객체다(함수랑 형태가 똑같다)
+function User() {
+	return this;
+}
+
+const user = new User();
+console.log(user);
+
+// 함수와 객체의 차이
+
+// 1. 함수는 연산된 결과값을 리턴해 주거나, 실행만 한다.
+// 1. 함수는 기능들의 모음
+// 1. 함수는 변수를 var, let, const로 선언해서 쓴다.
+function hap(a, b) {
+	var c = a + b;
+	//console.log(c);
+	return c;
+}
+
+// 1. 객체는 나(this)를 리턴해 준다.
+// 1. 객체는 독립적인 변수와 기능들의 모음
+// 1. 객체의 변수는 this의 변수로 선언해서 쓴다.
+function Hap(x, y) {
+	this.c = x + y;
+	return this;
+}
+
+const hap2 = new Hap(10, 20);
+console.log(hap2);
+</script>

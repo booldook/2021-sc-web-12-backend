@@ -18,14 +18,14 @@ var f = { a: 1, b: 2, c: ['a', 'b'], d: function(){} };  // 또다른 window
 var g = function() { var a = 10; function b() {} }
 var h = null;
 
-console.log(typeof a);
-console.log(typeof b);
-console.log(typeof c);
-console.log(typeof d);
-console.log(typeof e);
-console.log(typeof f);
-console.log(typeof g);
-console.log(typeof h);
+console.log(typeof a);	// number
+console.log(typeof b);	// string
+console.log(typeof c);	// boolean
+console.log(typeof d);	// undefined
+console.log(typeof e);	// object
+console.log(typeof f);	// object
+console.log(typeof g);	// function
+console.log(typeof h);	// object
 
 console.log(e[3].a);
 console.log(f.c[1]);
@@ -39,4 +39,5 @@ const gg = function() {};
 ee[0] = 'A';
 ee.push('B');
 console.log(ee);
+
 </script>
