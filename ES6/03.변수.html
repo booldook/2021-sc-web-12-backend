@@ -1,0 +1,42 @@
+<script>
+// const는 언제 쓸까?
+/*
+variable type
+Primitive type: Number, String, Boolean, undefined
+Reference type: Array, Object, function(엄밀하게 Object), null
+*/
+
+// primitive
+var a = 1;
+var b = '1';
+var c = true;
+var d;
+
+// reference
+var e = [1, 2, 3, { a: 10 }, function(){}, null];
+var f = { a: 1, b: 2, c: ['a', 'b'], d: function(){} };  // 또다른 window
+var g = function() { var a = 10; function b() {} }
+var h = null;
+
+console.log(typeof a);
+console.log(typeof b);
+console.log(typeof c);
+console.log(typeof d);
+console.log(typeof e);
+console.log(typeof f);
+console.log(typeof g);
+console.log(typeof h);
+
+console.log(e[3].a);
+console.log(f.c[1]);
+console.log(f['c'][1]);
+
+// Reference type은 관습적으로 const로 선언한다.
+const ee = [];
+const ff = {};
+const gg = function() {};
+
+ee[0] = 'A';
+ee.push('B');
+console.log(ee);
+</script>
