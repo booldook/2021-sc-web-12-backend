@@ -1,0 +1,40 @@
+<script>
+/* 
+변수선언 : var, let(지역변수), const(상수: 한번 값을 주면 값을 바꿀수 없다.)
+*/
+// 여기서 선언하는건 최상위에서 선언(함수나 객체 안이 아니다)한 변수들은 본 js의 어디서나 접근할 수 있다.
+var a = 1;
+let b = 2;
+const c = 3;
+console.log(a, b, c);
+a = 11;
+b = 22;
+// c = 33; // Error
+
+for(var i=0; i<10; i++) {
+	console.log(i); // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+}
+console.log(i); // 10
+
+for(let j=0; j<10; j++) {
+	console.log(j);
+}
+//console.log(j); // Error - let은 for문도 스코프로 본다. 그래서 for문 안에서만 j는 존재한다.
+
+function aa() {
+	// var k = 0;
+	for(var k=0; k<10; k++) {
+		console.log(k); // 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+	}
+	console.log(k);
+	console.log(a, b);
+}
+aa();
+// console.log(k); // Error: k는 aa함수의 지역변수이므로 밖에서 접근못한다.
+
+function aaa() {
+	var a1 = 10;
+	console.log(a1);
+}
+console.log(window);
+</script>
