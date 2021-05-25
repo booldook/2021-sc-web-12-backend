@@ -5,13 +5,53 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>변수</title>
+	<script src="../public/js/jquery-3.5.1.js"></script>
 </head>
 <body>
-	<header>
-		
-	</header>
+	<ul class="list-wrap">
+		<li class="list">1번</li>
+		<li class="list">2번</li>
+		<li class="list">3번</li>
+		<li class="list">4번</li>
+		<li class="list">5번</li>
+		<li class="list">6번</li>
+		<li class="list">7번</li>
+		<li class="list">8번</li>
+		<li class="list">9번</li>
+		<li class="list">10번</li>
+	</ul>
 	<script>
+		/* $('.list').click(function() {
+			alert($(this).text());
+		}); */
 
+		/* const list = document.querySelector('.list'); // 맨 처음 만나는 한놈만 넣는다.
+		const list = document.querySelectorAll('.list');
+		console.log(typeof list); */
+
+		/* const list = document.querySelectorAll('.list');
+		console.log(list);
+		for(var i=0; i<list.length; i++) {
+			list[i].addEventListener('click', function(){
+				alert(this.innerHTML);
+			})
+		} */
+
+		/* document.querySelectorAll('.list').forEach(function(v, i) {
+			v.addEventListener('click', function() {
+				console.log(this.innerHTML);
+			});
+		}); */
+
+		const list = document.querySelectorAll('.list');
+		for(let i=0; i<list.length; i++) {
+			list[i].addEventListener('click', function(){
+				console.log(i);
+			});
+		}
+
+		let i = 1;
+		// let i = 2; // error
 	</script>
 </body>
 </html>
