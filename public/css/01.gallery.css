@@ -1,0 +1,3 @@
+.gallery-wrapper {max-width: 600px; margin: auto;}
+.gallery-wrapper > .thumb-wrap {display: flex; margin-top: 1em; justify-content: center;}
+.gallery-wrapper > .thumb-wrap > .thumb {margin: .5em; max-width: 160px;}

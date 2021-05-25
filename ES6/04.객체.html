@@ -81,21 +81,29 @@ console.log(user);
 
 // 1. 함수는 연산된 결과값을 리턴해 주거나, 실행만 한다.
 // 1. 함수는 기능들의 모음
-// 1. 함수는 변수를 var, let, const로 선언해서 쓴다.
+// 1. 함수는 변수를 var, let, const로 선언해서 쓴다. (함수 안의 값들에는 접근이 안된다: 캡슐화)
 function hap(a, b) {
 	var c = a + b;
 	//console.log(c);
-	return c;
+	function result(v) {
+		return '결과는 ' + v + ' 입니다.';
+	}
+	return result(c);
 }
+console.log(hap(10, 20));
 
 // 1. 객체는 나(this)를 리턴해 준다.
 // 1. 객체는 독립적인 변수와 기능들의 모음
 // 1. 객체의 변수는 this의 변수로 선언해서 쓴다.
 function Hap(x, y) {
 	this.c = x + y;
+	Hap.prototype.result = function(v) {
+		return '결과는 ' + v + ' 입니다.';
+	}
 	return this;
 }
 
 const hap2 = new Hap(10, 20);
-console.log(hap2);
+console.log( hap2.result(100) );
+// 생성자객체의 예제 -> /public/01.gallery.html
 </script>
