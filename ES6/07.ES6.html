@@ -1,9 +1,49 @@
 <script>
-const arr = ['홍길동', '홍길만', '홍길용'];
+	// Template Literals(Template String) ES6 추가
+	// var clsName = 'gallery';
+	var clsName = 'gallery';
+	var name = '버튼';
+	var html = `
+	<div class="wrapper ${clsName}">
+		<div class="bt-wrap">
+			<div class="bt-prev fa fa-angle-left">${name}</div>
+			<div class="bt-next fa fa-angle-right">${name}</div>
+		</div>
+	</div>`;
+	console.log(html);
 
-// 함수선언문
 
-// 함수표현식 - ES5
+	// 함수선언문 - Hoisting의 대상이 된다.
+	console.log(fn);
+	function fn() {
+		
+	}
+	
+	// 함수표현식 - ES5 - 변수에 함수를 담기 때문에 Hoisting 대상이 아니다. 항상 선언 된 뒤에서 써야 한다.
+	const fn2 = function () {
+		
+	}
+	console.log(fn2);
+	
+	// 함수표현식 - ES6 - Arrow Function
+	const fn3 = () => {
+		
+	}
+	console.log(fn3);
+	
+	const arr = ['홍길동', '홍길만', '홍길용'];
 
-// 함수표현식 - ES6
+	console.log('===================');
+	arr.forEach(function(v) {
+		console.log('나는 ' + v + ' 입니다.');
+	});
+
+	console.log('===================');
+	arr.forEach(v => {
+		console.log(`나는 ${v} 입니다.`);
+	});
+
+	console.log('===================');
+	const plusZero = v => v < 10 ? '0' + v : v;
+	console.log(plusZero(9));
 </script>
