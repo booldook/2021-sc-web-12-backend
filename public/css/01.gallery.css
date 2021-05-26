@@ -1,3 +1,7 @@
 .gallery-wrapper {max-width: 600px; margin: auto;}
 .gallery-wrapper > .thumb-wrap {display: flex; margin-top: 1em; justify-content: center;}
 .gallery-wrapper > .thumb-wrap > .thumb {margin: .5em; max-width: 160px;}
+
+.gallery1 {position: relative; margin-bottom: 5em;}
+.gallery1 > .bt-wrap {position: absolute; bottom: -40px; font-size: 2em; width: 100%; text-align: center;}
+.gallery1 > .bt-wrap > .fa {cursor: pointer;}

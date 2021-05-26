@@ -1,5 +1,3 @@
-<button onclick="">눌러</button>
-
 <script>
 /*
 배열: index를 부여해서 자료를 모아놓은 곳
@@ -106,4 +104,29 @@ function Hap(x, y) {
 const hap2 = new Hap(10, 20);
 console.log( hap2.result(100) );
 // 생성자객체의 예제 -> /public/01.gallery.html
+
+// 생성자 객체
+function Sample(a, b) {
+	this.a = a || 10;
+	this.b = b || 20;
+	Sample.prototype.sum = function() {
+		console.log('합은 ' + (this.a + this.b) + ' 입니다.');
+	}
+	return this;
+}
+var sample = new Sample(100, 500);
+sample.sum();
+
+// ES6 - Class
+class SampleClass {
+	constructor(a, b) {
+		this.a = a;
+		this.b = b;
+	}
+	sum() {
+		console.log('합은 ' + (this.a + this.b) + ' 입니다.');
+	}
+}
+var sampleClass = new SampleClass(100, 500);
+sampleClass.sum();
 </script>
