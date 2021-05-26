@@ -46,4 +46,30 @@
 	console.log('===================');
 	const plusZero = v => v < 10 ? '0' + v : v;
 	console.log(plusZero(9));
+	
+	// spread operator (펼침 연산자)
+	// const arr2 = arr; // 얕은 복사
+	// const arr2 = arr.slice(); // 깊은 복사
+	
+	console.log('===================');
+	const arr2 = [...arr];
+	arr2.push('홍길순');
+	console.log(arr, arr2);
+	console.log(arr);
+	console.log(...arr);
+
+	// 펼침연산자 활용
+	console.log('===================');
+	const family1 = ['홍길동', '홍길만'];
+	const family2 = ['홍길순', '홍길이'];
+	const family3 = ['홍길삼', '홍길사'];
+	const family4 = family1.concat('홍길광').concat(family2).concat(family3); // ES5
+	const family5 = [...family1, '홍길광', ...family2, ...family3]; // ES6
+	console.log(family4, family5);
+
+	console.log('===================');
+	function sum() { // 가변인자
+		console.log(arguments);
+	}
+	sum(1, 2, 3, 4, 5, 6);
 </script>
