@@ -133,7 +133,11 @@
 		axios
 		.get(url, { params: { ...weatherInfo, lat, lon } })
 		.then(r => {
-			console.log(r.data);
+			let { temp, feels_like: feel } = r.data.main;
+			let { main, description: desc } = r.data.weather[0];
+			console.log(temp, feel, main, desc);
+
+
 		})
 		.catch(err => {
 			console.log(err);
@@ -145,4 +149,40 @@
 	}
 
 	navigator.geolocation.getCurrentPosition(onPosition, onError);
+
+
+	// 객체를 반복문을 돌릴수 있나요? 원칙적으로 돌릴수 없다? - for ~ in의 재발견
+	const orders = {
+		id: 1001,
+		productName: '좋은가방',
+		price: 2000,
+		cnt: 3,
+		color: 'red',
+	}
+
+	for(let i=0; i<orders.length; i++) {
+		console.log(i);
+	}
+
+	for(let i in orders) {
+		console.log(orders[i]);
+	}
+	
+	// ES6에서는 객체를 다음과 같이 반복할 수 있다.
+	// var entries = Object.entries(orders);
+	// console.log(entries);
+	console.log('===================');
+	for(let [k, v] of Object.entries(orders)) {
+		console.log(k, v);
+	}
+	
+	// Object.entries()
+	console.log('===================');
+	const arr6 = ['A', 'B', 'C'];
+	console.log( Object.entries(arr6) );
+	
+	console.log('===================');
+	console.log(Object.keys(orders));
+	console.log(Object.values(orders));
+	console.log(Object.entries(orders));
 </script>
