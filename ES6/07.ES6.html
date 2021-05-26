@@ -138,7 +138,7 @@ let { a, b, c: c2 } = obj;
 		let { url } = weatherInfo;
 		
 		$.get(url, { ...weatherInfo, lat, lon }, r => {
-			console.log(r);
+			//console.log(r);
 		});
 
 		axios
@@ -146,7 +146,7 @@ let { a, b, c: c2 } = obj;
 		.then(r => {
 			let { temp, feels_like: feel } = r.data.main;
 			let { main, description: desc } = r.data.weather[0];
-			console.log(temp, feel, main, desc);
+			// console.log(temp, feel, main, desc);
 
 
 		})
@@ -229,4 +229,32 @@ let { a, b, c: c2 } = obj;
 	console.log(Math);
 	console.log('===================');
 	console.log($().__proto__);
+
+	// ES6 신규객체 Set(), Map()
+	console.clear();
+	console.log('===================');
+	const set = new Set(); // 중복을 제거한 배열
+	console.log(set);
+	set.add('홍길순');
+	set.add('홍길동');
+	set.add('홍길동');
+	set.add('홍길동');
+	set.add('홍길만');
+	set.delete('홍길만');
+	console.log(set.has('홍길동'));
+	console.log(set.values());
+	console.log(set.size);
+
+	console.clear();
+	console.log('===================');
+	const map = new Map();
+	map.set('name', '홍길동');
+	map.set('age', 29);
+	map.set('kor', 90);
+	map.set('math', 90);
+	console.log(map);
+	map.delete('math');
+	console.log(map);
+	console.log(map.get('kor'));
+	// map.('id', '홍길동');
 </script>
