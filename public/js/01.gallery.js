@@ -7,9 +7,9 @@ $('.thumb').click(function() {
 
 $('.thumb').eq(0).trigger('click');
 */
+function Gallery(parent, imgs) {
 
 // '.wrapper', ['../img/gallery/3334.jpg', '../img/gallery/3348.jpg', '../img/gallery/3360.jpg']
-function Gallery(parent, imgs) {
 	this.$parent = $(parent);
 	this.imgs = imgs;
 	this.idx = 0;
@@ -46,7 +46,7 @@ function Gallery(parent, imgs) {
 		this.idx = this.idx === this.imgs.length - 1 ? 0 : this.idx + 1;
 		this.$galleryWrapper.find('.thumb').eq(this.idx).trigger('click');
 	}
-
+	
 	return this;
 }
 

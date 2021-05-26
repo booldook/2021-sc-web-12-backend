@@ -37,12 +37,15 @@ function validPhone(v) {
 //링크 정규식
 var URLPattern = /(((http(s)?:\/\/)\S+(\.[^(\n|\t|\s,)]+)+)|((http(s)?:\/\/)?(([a-zA-z\-_]+[0-9]*)|([0-9]*[a-zA-z\-_]+)){2,}(\.[^(\n|\t|\s,)]+)+))+/gi;
 var emailPattern = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/g;
-function emailReplace(_email){
-	return '<a href="mailto:' + _email + '" target="_blank">'+ _email +'</a>'
+
+function emailReplace(_email) {
+	return '<a href="mailto:' + _email + '" target="_blank">' + _email + '</a>'
 }
-function URLReplace(_url){
-	return '<a href="' + _url + '" target="_blank">'+ _url +'</a>'
+
+function URLReplace(_url) {
+	return '<a href="' + _url + '" target="_blank">' + _url + '</a>'
 }
+
 function validLink(v) {
 	return (v.match(URLPattern) !== null) ? true : false
 }
@@ -51,15 +54,31 @@ function validLink(v) {
 
 /****************** Array.sort() ********************/
 function sortAsc(key) {
-	return function(a, b) {
+	return function (a, b) {
 		return key ? a[key] - b[key] : a - b;
 	}
 }
 
 function sortDesc(key) {
-	return function(a, b) {
+	return function (a, b) {
 		return key ? b[key] - a[key] : b - a;
 	}
+}
+
+/****************** Array.shuffle() ********************/
+function shuffle(array) {
+	var currentIndex = array.length;
+	var temporaryValue, randomIndex;
+
+	while (0 !== currentIndex) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+	return array;
 }
 
 
@@ -67,17 +86,18 @@ function sortDesc(key) {
 /*************** Scroll Spy *****************/
 function scrollSpy(el, cls, _gap) {
 	$(window).scroll(onScrollSpy).trigger('scroll');
+
 	function onScrollSpy() {
 		var scrollTop = $(this).scrollTop();
 		var pageOffset = [];
 		var page;
 		var gap = _gap || 300;
-		$(el).each(function(i){
+		$(el).each(function (i) {
 			pageOffset[i] = $(this).offset().top;
 		})
-	
-		for(var i=1; i<pageOffset.length; i++) {
-			if(scrollTop < pageOffset[i] - gap) break;
+
+		for (var i = 1; i < pageOffset.length; i++) {
+			if (scrollTop < pageOffset[i] - gap) break;
 		}
 		page = i - 1;
 		$(el).eq(page).addClass(cls);
@@ -119,38 +139,62 @@ function getSwiper(el, opt) {
 	}
 
 	var breakpoints = {};
-	if(opt.break == 2) {
+	if (opt.break == 2) {
 		breakpoints = {
-			'768': { slidesPerView: 2}
+			'768': {
+				slidesPerView: 2
+			}
 		}
-	}
-	else if(opt.break == 3) {
+	} else if (opt.break == 3) {
 		breakpoints = {
-			'768': { slidesPerView: 2},
-			'1200': { slidesPerView: 3}
+			'768': {
+				slidesPerView: 2
+			},
+			'1200': {
+				slidesPerView: 3
+			}
 		}
-	}
-	else if(opt.break == 4) {
+	} else if (opt.break == 4) {
 		breakpoints = {
-			'576': { slidesPerView: 2},
-			'992': { slidesPerView: 3},
-			'1200': { slidesPerView: 4}
+			'576': {
+				slidesPerView: 2
+			},
+			'992': {
+				slidesPerView: 3
+			},
+			'1200': {
+				slidesPerView: 4
+			}
 		}
-	}
-	else if(opt.break == 5) {
+	} else if (opt.break == 5) {
 		breakpoints = {
-			'576': { slidesPerView: 2},
-			'768': { slidesPerView: 3},
-			'992': { slidesPerView: 4},
-			'1200': { slidesPerView: 5}
+			'576': {
+				slidesPerView: 2
+			},
+			'768': {
+				slidesPerView: 3
+			},
+			'992': {
+				slidesPerView: 4
+			},
+			'1200': {
+				slidesPerView: 5
+			}
 		}
-	}
-	else if(opt.break > 5) {
+	} else if (opt.break > 5) {
 		breakpoints = {
-			'576': { slidesPerView: opt.break - 3},
-			'768': { slidesPerView: opt.break - 2},
-			'992': { slidesPerView: opt.break - 1},
-			'1200': { slidesPerView: opt.break}
+			'576': {
+				slidesPerView: opt.break-3
+			},
+			'768': {
+				slidesPerView: opt.break-2
+			},
+			'992': {
+				slidesPerView: opt.break-1
+			},
+			'1200': {
+				slidesPerView: opt.break
+			}
 		}
 	}
 
@@ -160,27 +204,27 @@ function getSwiper(el, opt) {
 		autoplay: autoplay,
 		loop: opt.loop === false ? false : true,
 		speed: opt.speed || 500,
-		slidesPerView: opt.break && opt.break > 5 ? opt.break - 4 : 1,
+		slidesPerView: opt.break && opt.break > 5 ? opt.break-4 : 1,
 		// slidesPerView: opt.break ? opt.break : 1,
 		spaceBetween: opt.space === undefined ? 40 : opt.space,
 		breakpoints: breakpoints
 	})
 
-	$(autoEl).hover(function(){
+	$(autoEl).hover(function () {
 		swiper.autoplay.stop();
-	}, function(){
+	}, function () {
 		swiper.autoplay.start();
 	})
 
 	function onResize(e) {
-		$(el + ' .ratio-wrap').each(function(i) {
+		$(el + ' .ratio-wrap').each(function (i) {
 			var ratio = $(this).data('ratio') // data-ratio
 			var width = $(this).innerWidth();
 			var height = width * Number(ratio);
 			$(this).innerHeight(height);
 		})
 	}
-	
+
 	$(window).resize(onResize).trigger('resize');
 
 	return swiper;
@@ -196,10 +240,13 @@ function cloneObject(obj) {
 
 /*************** getLocation promise version *****************/
 function getGeo() {
-	return new Promise(function(resolve, reject) {
-		navigator.geolocation.getCurrentPosition(function(r) {
-			resolve({ lat: r.coords.latitude, lon: r.coords.longitude });
-		}, function(err) {
+	return new Promise(function (resolve, reject) {
+		navigator.geolocation.getCurrentPosition(function (r) {
+			resolve({
+				lat: r.coords.latitude,
+				lon: r.coords.longitude
+			});
+		}, function (err) {
 			reject(err);
 		});
 	});

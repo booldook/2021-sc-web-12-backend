@@ -1,5 +1,6 @@
 <script>
-const arr = ['홍길동', '홍길순', '홍길만'];
+// 반복문
+const arr = new Array('홍길동', '홍길순', '홍길만');
 for(let i=0; i<arr.length; i++) {
 	console.log(arr[i] + ' 입니다');
 }
@@ -11,5 +12,45 @@ console.log('==================');
 let cnt = 0;
 while(cnt < arr.length) {
 	console.log(arr[cnt++] + ' 입니다');
+}
+console.log('==================');
+arr.forEach(function(v, i) {
+	console.log(v + ' 입니다');
+});
+
+// ES6에서 추가된 반복문
+console.log('==================');
+for(let v of arr) {
+	console.log(v + ' 입니다');
+}
+
+// 한걸음 더 들어가 봅시다. - for ~ in의 약점
+Array.prototype.shuffle = function() {
+	var currentIndex = this.length;
+	var temporaryValue, randomIndex;
+
+	while (0 !== currentIndex) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+
+		temporaryValue = this[currentIndex];
+		this[currentIndex] = this[randomIndex];
+		this[randomIndex] = temporaryValue;
+	}
+}
+arr.shuffle();
+console.log('==================');
+console.log(arr[0]);
+console.log(arr[1]);
+console.log(arr[2]);
+console.log(arr[3]);
+console.log('==================');
+console.log(arr);
+for(let i in arr) {
+	console.log(arr[i] + ' 입니다');
+}
+console.log('==================');
+for(let v of arr) {
+	console.log(v + ' 입니다');
 }
 </script>
