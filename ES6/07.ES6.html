@@ -1,3 +1,5 @@
+<script src="../public/js/axios.min.js"></script>
+<script src="../public/js/jquery-3.5.1.js"></script>
 <script>
 	// Template Literals(Template String) ES6 추가
 	// var clsName = 'gallery';
@@ -69,7 +71,78 @@
 
 	console.log('===================');
 	function sum() { // 가변인자
-		console.log(arguments);
+		let total = 0;
+		for(let v of arguments) total += v;
+		return total;
 	}
-	sum(1, 2, 3, 4, 5, 6);
+	// ES5
+	let total = sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+	console.log(total);
+	//ES6
+	let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	let total2 = sum(...numbers);
+	console.log(total2);
+
+	// 구조분해할당(비구조화 할당)
+	const students = {
+		class1: [
+			{ id: 1, name: '홍길동', kor: 80, eng: 70 },
+			{ id: 2, name: '홍길순', kor: 90, eng: 75 },
+			{ id: 3, name: '홍길만', kor: 88, eng: 92 },
+		],
+		class2: [
+			{ id: 1, name: '홍길이', kor: 80, eng: 70 },
+			{ id: 2, name: '홍길삼', kor: 90, eng: 75 },
+			{ id: 3, name: '홍길사', kor: 88, eng: 92 },
+		],
+		class3: [
+			{ id: 1, name: '홍길오', kor: 80, eng: 70 },
+			{ id: 2, name: '홍길육', kor: 90, eng: 75 },
+			{ id: 3, name: '홍길칠', kor: 88, eng: 92 },
+		],
+	}
+	
+	// let class1 = students.class1;
+	// let class2 = students.class2;
+	// let class3 = students.class3;
+	let { class1, class2, class3 } = students;
+	console.log(class1);
+	console.log(class2);
+	console.log(class3);
+
+	// 펼침연산자와 구조분해할당을 활용하기
+	console.clear();
+	console.log('===================');
+
+	const weatherInfo = {
+		url: 'https://api.openweathermap.org/data/2.5/weather',
+		appid: '02efdd64bdc14b279bc91d9247db4722',
+		units: 'metric',
+	}
+
+	const onPosition = r => {
+		// let lat = r.coords.latitude;
+		// let lon = r.coords.longitude;
+		let { latitude: lat, longitude: lon } = r.coords;
+		let { url } = weatherInfo;
+		
+		$.get(url, { ...weatherInfo, lat, lon }, r => {
+			console.log(r);
+		});
+
+		axios
+		.get(url, { params: { ...weatherInfo, lat, lon } })
+		.then(r => {
+			console.log(r.data);
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	}
+
+	const onError = err => {
+		console.log(err);
+	}
+
+	navigator.geolocation.getCurrentPosition(onPosition, onError);
 </script>
