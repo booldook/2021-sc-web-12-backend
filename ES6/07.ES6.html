@@ -1,3 +1,14 @@
+<!-- 
+1. Template literals
+2. Arrow function
+3. 펼침연산자: ...변수
+4. 구조분해할당:
+const arr = [1, 2, 3]
+let { a, b, c } = arr; // a: 1, b: 2, c: 3
+const obj = { a: '1', b: '2', c: '3' }
+let { a, b, c: c2 } = obj;
+5. Object.keys(), Object.values(), Object.entries()
+ -->
 <script src="../public/js/axios.min.js"></script>
 <script src="../public/js/jquery-3.5.1.js"></script>
 <script>
@@ -185,4 +196,37 @@
 	console.log(Object.keys(orders));
 	console.log(Object.values(orders));
 	console.log(Object.entries(orders));
+
+
+	// 문자열검색
+	console.clear();
+	console.log('===================');
+	let str = '동해물과 백두산이 마르고 닳도록';
+	let search = '동해';
+	let isInclude = str.indexOf(search) > -1 ? true : false;
+	console.log(isInclude);
+	let isSearch = str.includes(search); // ES6
+	console.log(isSearch);
+	let isStart = str.startsWith(search); // ES6
+	console.log(isStart);
+	let isEnd = str.endsWith(search); // ES6
+	console.log(isEnd);
+	console.log(str.slice(2));
+	console.log(str.split(' '));
+
+
+	console.log('===================');
+	console.log(String.prototype);
+	console.log('===================');
+	console.log(Number.prototype);
+	console.log('===================');
+	console.log(Array.prototype);
+	console.log('===================');
+	console.log(Object.prototype);
+	console.log('===================');
+	console.log(Date.prototype);
+	console.log('===================');
+	console.log(Math);
+	console.log('===================');
+	console.log($().__proto__);
 </script>
