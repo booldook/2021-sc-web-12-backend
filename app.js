@@ -12,6 +12,7 @@ app.listen(3000, () => { console.log('http://127.0.0.1:3000') });
 app.use('/', express.static( path.join(__dirname, './public') ));
 
 app.get('/product', (req, res, next) => {
+	let disp = req.query.disp;
 	// 가상으로 데이터베이스에서 상품정보를 가져왔음.
 	const products = [
 		{id: 1, title: '좋은상품', price: '20,000원'},
@@ -30,11 +31,13 @@ app.get('/product', (req, res, next) => {
 			</head>
 			<body>
 				<h1>우리회사 상품: ${products.length}개</h1>
-				<ul>`;
+				<ul>
+	`;
 					for(let v of products) {
 						html += `<li>${v.id} | ${v.title} | ${v.price}</li>`;
 					}
-	html += `
+	html += 
+	`
 				</ul>
 			</body>
 		</html>`;
