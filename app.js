@@ -1,19 +1,22 @@
 const express = require('express');
-const path = require('path');
 const app = express();
+const path = require('path');
 
-
-/****************** server start ********************/
+/* ************ Server Init ************ */
+// app.listen(3000);
 app.listen(3000, () => { console.log('http://127.0.0.1:3000') });
 
+/* ************ Pug Init ************ */
+// app.set(변수명, 값)
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, './views'));
+app.locals.pretty = true;
 
-/****************** router ********************/
-// http://127.0.0.1:3000 : app.use(GET/POST 가리지 않고 다 받겠다)
-app.use('/', express.static( path.join(__dirname, './public') ));
+/* ************ Rounter Static ************ */
+app.use('/', express.static(path.join(__dirname, './public')));
 
-app.get('/product', (req, res, next) => {
-	let disp = req.query.disp;
-	// 가상으로 데이터베이스에서 상품정보를 가져왔음.
+/* ************ Rounter Dynamic ************ */
+app.get('/products', (req, res, next) => {
 	const products = [
 		{id: 1, title: '좋은상품', price: '20,000원'},
 		{id: 2, title: '좋은상품2', price: '25,000원'},
@@ -22,24 +25,5 @@ app.get('/product', (req, res, next) => {
 		{id: 5, title: '좋은상품5', price: '38,000원'},
 		{id: 6, title: '좋은상품6', price: '39,000원'},
 	]
-	let html = `
-		<!doctype html>
-		<html lang="ko">
-			<head> 
-				<meta charset="utf-8">
-				<title>상품정보</title>
-			</head>
-			<body>
-				<h1>우리회사 상품: ${products.length}개</h1>
-				<ul>
-	`;
-					for(let v of products) {
-						html += `<li>${v.id} | ${v.title} | ${v.price}</li>`;
-					}
-	html += 
-	`
-				</ul>
-			</body>
-		</html>`;
-	res.send(html);
+	res.render('product.pug', { count: products.length });
 });
