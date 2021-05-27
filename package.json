@@ -1,0 +1,26 @@
+{
+  "name": "12.backend",
+  "version": "1.0.0",
+  "main": "01.app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/booldook/2021-sc-web-12-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/booldook/2021-sc-web-12-backend/issues"
+  },
+  "homepage": "https://github.com/booldook/2021-sc-web-12-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {},
+  "description": ""
+}
