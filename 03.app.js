@@ -5,7 +5,7 @@ const path = require('path');
 
 /* ************ Pug Init ************ */
 // app.set(변수명, 값)
-app.set('view engine', 'ejs'); // view engine으로 ejs를 쓰겠다.
+app.set('view engine', 'pug'); // view engine으로 pug를 쓰겠다.
 app.set('views', path.join(__dirname, './views')); // pug파일 위치
 app.locals.pretty = true; // 브라우저에 보내주는 html을 이쁘게
 
