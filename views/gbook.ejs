@@ -5,7 +5,7 @@
 	<%- include('./inc/title', { title: '한줄 방명록' }) %> 
 	<div class="gbook-wrapper">
 		<form action="/gbook/save" method="POST" class="form-inline">
-			<input type="text" name="content" class="input-content form-control" placeholder="한마디 남겨주세요.">
+			<input type="text" name="content" class="input-content form-control" placeholder="한마디 남겨주세요." autofocus>
 			<button class="btn btn-primary">등록</button>
 		</form>
 		<table class="table gbook-tb">

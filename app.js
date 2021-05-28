@@ -1,13 +1,40 @@
+/*
+클라이언트(Browser)에서 보낸 데이터를 받는법 3가지
+- GET
+	1. http://127.0.0.1:3000/gbook/save?content=ABCD
+		=> 
+		app.get('/gbook/save', (req, res, next) => {
+			let content = req.query.content;
+		})
+	2. http://127.0.0.1:3000/gbook/save/ABCD
+		=> 
+		app.get('/gbook/save/:content', (req, res, next) => {
+			let content = req.params.content;
+		})
+
+- POST
+	1. <form method="POST" action="/gbook/save">
+	=>
+	app.post('/gbook/save/', (req, res, next) => {
+		let content = req.body.content;
+	})
+*/
+
 const express = require('express');
 const app = express();
 require('./modules/server-init')(app, 3000);
 const path = require('path');
+const moment = require('moment');
 
-/* ************ Pug Init ************ */
+/* ************ Ejs Init ************ */
 // app.set(변수명, 값)
 app.set('view engine', 'ejs'); // view engine으로 ejs를 쓰겠다.
 app.set('views', path.join(__dirname, './views')); // pug파일 위치
 app.locals.pretty = true; // 브라우저에 보내주는 html을 이쁘게
+
+/* ************ req.body Init ************ */
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 /* ************ Global variables ************ */
 const event = [
@@ -40,5 +67,9 @@ app.get('/gbook', (req, res, next) => {
 });
 
 app.post('/gbook/save', (req, res, next) => {
-	res.send('저장됨');
+	let { content } = req.body;
+	let createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
+	let id = gbook[0].id + 1;
+	gbook.unshift({ id, content, createdAt });
+	res.redirect('/gbook');
 });
