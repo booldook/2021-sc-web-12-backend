@@ -1,0 +1,22 @@
+doctype html 
+html(lang="ko") 
+	head
+		meta(charset="utf-8")
+		title 이벤트리스트
+		link(rel="stylesheet" href="/css/all.min.css")
+		link(rel="stylesheet" href="/css/bootstrap.min.css")
+		link(rel="stylesheet" href="/css/base.css")
+		link(rel="stylesheet" href="/css/event.css")
+	body
+		.wrapper
+			h2.title
+				i.fa.fa-paper-plane.mr-2
+				span= `이벤트리스트: ${event.length}개`
+			ul.evt-wrapper
+				each v in event
+					li.evt 
+						.img-wrap 
+							img.w-100(src=`/img/event/${v.src}`, alt="pic")
+						.desc-wrap 
+							h3.title= v.title
+							p.price= v.price
