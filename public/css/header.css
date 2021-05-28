@@ -1,0 +1,6 @@
+.header-wrapper {display: flex; justify-content: space-between; background-color: #444; color: #fff;}
+
+.header-wrapper .logo {padding: 1em 1.5em; font-size: 1.25em;}
+.header-wrapper .navi-wrap {display: flex;}
+.header-wrapper .navi-wrap a {padding: 1.325em 1.5em; transition: all .3s;}
+.header-wrapper .navi-wrap a:hover {background-color: antiquewhite; color: #222;}

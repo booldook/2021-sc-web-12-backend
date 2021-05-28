@@ -25,5 +25,5 @@ app.get('/event', (req, res, next) => {
 		{id: 8, title: '좋은이벤트8', src:'evt08.jpg', price: '49,000원'},
 		{id: 9, title: '좋은이벤트9', src:'evt09.jpg', price: '89,000원'},
 	]
-	res.render('event.pug', { event });
+	res.render('event', { event });
 });
