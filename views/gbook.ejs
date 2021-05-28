@@ -1,8 +1,35 @@
-<%- include('./inc/head.ejs') %> 
-<%- include('./inc/header.ejs') %> 
+<%- include('./inc/head') -%> 
+<%- include('./inc/header') -%> 
 <link rel="stylesheet" href="/css/gbook.css">
 <div class="wrapper">
-	.wrapper
+	<%- include('./inc/title', { title: '한줄 방명록' }) -%> 
+	<div class="gbook-wrapper">
+		<form action="/gbook/save" method="POST" class="form-inline">
+			<input type="text" name="content" class="input-content form-control" placeholder="한마디 남겨주세요.">
+			<button class="btn btn-primary">등록</button>
+		</form>
+		<table class="table gbook-tb">
+			<thead class="thead-dark">
+				<tr>
+					<th>번호</th>
+					<th>내용</th>
+					<th>등록일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>좋아요! 두근두근대요~</td>
+					<td>2021-05-28 12:16:27</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>좋아요!!!! 두근두근대요~~~~~!!!</td>
+					<td>2021-05-28 12:16:25</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 <script src="/js/gbook.js"></script>
-<%- include('./inc/foot.ejs') %> 
+<%- include('./inc/foot') -%> 
