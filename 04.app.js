@@ -71,5 +71,5 @@ app.post('/gbook/save', (req, res, next) => {
 	let createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
 	let id = gbook[0].id + 1;
 	gbook.unshift({ id, content, createdAt });
-	res.redirect('gbook/gbook');
+	res.redirect('/gbook');
 });

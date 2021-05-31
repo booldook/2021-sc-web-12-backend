@@ -4,6 +4,7 @@ const app = express();
 require('./modules/server-init')(app, 3000);
 
 const path = require('path');
+const { runInNewContext } = require('vm');
 
 /* ************ View Init ************ */
 app.set('view engine', 'ejs');
