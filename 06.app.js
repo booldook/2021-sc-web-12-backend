@@ -1,5 +1,4 @@
-/* ************ 07.app.js [데이터베이스 사용] ************ */
-// mysql2 | sequelize | mongoose
+/* ************ 06.app.js [라우터 분리] ************ */
 
 /* ************ Require ************ */
 const express = require('express');
@@ -12,10 +11,10 @@ const path = require('path');
 /* ************ View Init ************ */
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
-app.locals.pretty = true;
+app.locals.pretty = true; // app.locals에 변수로 등록하면 ejs에서 바로 접근
 
 
-/* ************ Post Init ************ */
+/* ************ Post Init (req.body에 접근) ************ */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -29,7 +28,7 @@ const userRouter = require('./routes/user-router');
 app.use('/prd', prdRouter);
 app.use('/user', userRouter);
 
-/* ************ Error Router ************ */
+/* ************ Error Router(예외처리) ************ */
 const notFoundRouter = require('./routes/404-router');
 const errorRouter = require('./routes/500-router');
 
