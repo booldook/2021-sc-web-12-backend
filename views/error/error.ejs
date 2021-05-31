@@ -2,20 +2,20 @@
 <link rel="stylesheet" href="/css/error.css">
 <div class="error-wrapper">
 	<div class="error-wrap">
-		<div>
-			<div class="img-wrap">
-				<img src="/img/error/<%= status || '500' %>-error.png" alt="icon" class="w100">
-			</div>
-			<h2><%= message %></h2>
+		<div class="img-wrap">
+			<img src="/img/error/<%= status || '500' %>-error.png" alt="icon" class="w100">
 		</div>
-		<% if(description) { %>
+		<h2 class="message-wrap"><%= message %></h2>
+	</div>
+	<% if(description) { %>
+		<div class="desc-wrap">
 			<hr>
 			<p><%= description %></p>
-		<% } %>
-		<div class="bt-wrap">
-			<hr>
-			<a href="/" class="btn btn-primary">메인페이지로 돌아가기</a>
 		</div>
+	<% } %>
+	<div class="bt-wrap">
+		<hr>
+		<a href="/" class="btn btn-primary">메인페이지로 돌아가기</a>
 	</div>
 </div>
 <%- include('../inc/foot') %> 

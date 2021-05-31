@@ -1,2 +1,7 @@
 html, body {background-color: #f3f3f3;}
-.error-wrapper {max-width: 1200px; margin: 0 auto; padding: 2em;}
+.error-wrapper {max-width: 650px; margin: 20vh auto 0 auto; padding: 2em;}
+.error-wrapper .error-wrap {display: flex; align-items: flex-end;}
+.error-wrapper .error-wrap .img-wrap {width: 80px; flex-shrink: 0;}
+.error-wrapper .error-wrap h2.message-wrap {font-size: 1.5em; margin-left: 1em; line-height: 1.325; letter-spacing: -.075em;}
+.error-wrapper .desc-wrap > p {padding: 1em 0;}
+.error-wrapper .bt-wrap {color: #fff; text-align: center;}
