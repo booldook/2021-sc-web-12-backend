@@ -1,0 +1,12 @@
+<%- include('../inc/head') -%> 
+<%- include('../inc/header') -%> 
+<link rel="stylesheet" href="/css/event.css">
+<div class="wrapper">
+	<%- include('../inc/title', { title: `이벤트: ${event.length}개` }) -%> 
+	<ul class="evt-wrapper">
+		<% for(let v of event) { %>
+			<%- include('./list', { v }) -%>
+		<% } %>
+	</ul>
+</div>
+<%- include('../inc/foot') -%> 
