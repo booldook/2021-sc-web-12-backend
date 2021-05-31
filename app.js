@@ -20,32 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 /* ************ Router Init ************ */
+const prdRouter = require('./routes/prd-router');
+
 app.use('/', express.static(path.join(__dirname, './public')));
-
-app.get('/prd', (req, res, next) => {
-	// 상품리스트 가져오기 - GET[READ]
-});
-
-app.get('/prd/create', (req, res, next) => {
-	// 상품 등록 화면 보여주기
-});
-
-app.post('/prd', (req, res, next) => {
-	// 상품 저장하기 - POST[CREATE]
-});
-
-app.get('/prd/change/:id', (req, res, next) => {
-	// 상품 수정 화면 보여주기 - GET[READ]
-});
-
-app.post('/prd/:id', (req, res, next) => {
-	// 상품 수정하기 - POST[UPDATE]
-});
-
-app.get('/prd/:id', (req, res, next) => {
-	// 상품 삭제하기 - GET[DELETE]
-});
-
-app.get('/prd/view/:id', (req, res, next) => {
-	// 상품 하나 가져오기 - GET[READ]
-});
+app.use('/prd', prdRouter);
