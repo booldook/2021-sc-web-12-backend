@@ -8,6 +8,7 @@ const connection = mysql.createConnection({
 	database: 'shop'
 });
 
+// READ
 router.get('/', (req, res, next) => {
 	let sql = 'SELECT * FROM product';
 	connection.query(sql, (err, r) => {
@@ -15,6 +16,7 @@ router.get('/', (req, res, next) => {
 	});
 });
 
+// CREATE
 // router.post('/', (req, res, next) => { // req.body
 router.get('/insert', (req, res, next) => {
 	let sql = 'INSERT INTO product SET prdname=?, price=?, content=?';
@@ -23,6 +25,18 @@ router.get('/insert', (req, res, next) => {
 		res.json(r);
 	});
 });
+
+// DELETE
+router.get('/remove/:id', (req, res, next) => {
+	let id = req.params.id;
+	let sql = 'DELETE FROM product WHERE id=?';
+	let values = [id];
+	connection.query(sql, values, (err, r) => {
+		res.json(r);
+	});
+});
+
+
 
 
 module.exports = router;
