@@ -25,9 +25,11 @@ app.use('/', express.static(path.join(__dirname, './public')));
 /* ************ Router Init ************ */
 const prdRouter = require('./routes/prd-router');
 const userRouter = require('./routes/user-router');
+const sqlRouter = require('./routes/sql-router');
 
 app.use('/prd', prdRouter);
 app.use('/user', userRouter);
+app.use('/sql', sqlRouter);
 
 /* ************ Error Router ************ */
 const notFoundRouter = require('./routes/404-router');
