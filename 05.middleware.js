@@ -31,6 +31,7 @@ app.get('/sample', sampleCb());
 
 // 1번 방식 - app.use()에 함수로 바로 등록
 app.use((req, res, next) => {
+	 // 모든 request에 대해서 처리되는 미들웨어
 	req.mw1 = 'Hello mw1';
 	next();
 });
@@ -40,7 +41,7 @@ const mw2 = (req, res, next) => {
 	req.mw2 = 'Hello mw2';
 	next();
 }
-app.use(mw2);
+app.use(mw2); // 모든 request에 대해서 처리되는 미들웨어
 
 // 3번 방식 - app.use()에 실행된 내용으로 리턴된 함수를 등록
 const mw3 = (str) => {
@@ -49,7 +50,7 @@ const mw3 = (str) => {
 		next();
 	}
 }
-app.use(mw3('mw3'));
+app.use(mw3('mw3')); // 모든 request에 대해서 처리되는 미들웨어
 
 app.get('/test', (req, res, next) => {
 	let { mw1, mw2, mw3 } = req;
@@ -60,6 +61,7 @@ app.get('/test', (req, res, next) => {
 
 // 4번 방식 - 직접 라우터에 등록해서 쓴다.
 app.get('/test2', (req, res, next) => {
+	// 선택된 라우터에 대해서 처리되는 미들웨어
 	req.mw4 = 'Hello mw4';
 	next();
 }, (req, res, next) => {
@@ -69,11 +71,13 @@ app.get('/test2', (req, res, next) => {
 
 // 5번/6번 방식 - 직접 라우터에 등록하는데 기 선언된 함수를 불러다 쓴다.
 const mw5 = (req, res, next) => {
+	// 선택된 라우터에 대해서 처리되는 미들웨어
 	req.mw5 = 'Hello mw5';
 	next();
 }
 const mw6 = (str) => {
 	return (req, res, next) => {
+		// 선택된 라우터에 대해서 처리되는 미들웨어
 		req.mw6 = 'Hello '+ str;
 		next();
 	}
