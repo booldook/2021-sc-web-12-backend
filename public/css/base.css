@@ -56,7 +56,9 @@ label {user-select: none;}
 /******************** Base ***********************/
 .clearfix::after {display: block; content: ""; clear: both;}
 .img {width: 100%;}
+.w100 {width: 100%;}
 .imgx {max-width: 100%;}
+.mw100 {max-width: 100%;}
 .fa {line-height: 1;}
 
 .ratio-bg {background-position: center; background-size: cover; width: 100%; height: 100%;}
