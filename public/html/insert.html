@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>저장테스트</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h2>저장 테스트</h2>
+		</div>
+		<form action="/sql2/save" method="POST">
+			<input type="text" class="form-control my-1" name="prdname" placeholder="상품명" autofocus>
+			<input type="text" class="form-control my-1" name="price" placeholder="가격">
+			<input type="text" class="form-control my-1" name="content" placeholder="설명">
+			<button class="btn btn-primary">저장</button>
+		</form>
+	</div>
+</body>
+</html>

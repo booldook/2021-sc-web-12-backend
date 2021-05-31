@@ -26,10 +26,12 @@ app.use('/', express.static(path.join(__dirname, './public')));
 const prdRouter = require('./routes/prd-router');
 const userRouter = require('./routes/user-router');
 const sqlRouter = require('./routes/sql-router');
+const sqlRouterReview = require('./routes/sql-router-review');
 
 app.use('/prd', prdRouter);
 app.use('/user', userRouter);
 app.use('/sql', sqlRouter);
+app.use('/sql2', sqlRouterReview);
 
 /* ************ Error Router ************ */
 const notFoundRouter = require('./routes/404-router');

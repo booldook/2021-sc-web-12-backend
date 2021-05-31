@@ -1,0 +1,11 @@
+-- UPDATE users SET userpw='0000' WHERE id=1;
+-- DELETE FROM users WHERE id=2;
+
+CREATE TABLE `product` (
+	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`prdname` VARCHAR(255) NOT NULL,
+	`price` INT UNSIGNED ZEROFILL NULL,
+	`content` TEXT NULL,
+	`createdAt` DATETIME NOT NULL DEFAULT NOW(),
+	PRIMARY KEY (`id`)
+);
