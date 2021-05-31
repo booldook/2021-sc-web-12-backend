@@ -6,7 +6,6 @@ const app = express();
 require('./modules/server-init')(app, 3000);
 
 const path = require('path');
-const error = require('http-errors');
 
 
 /* ************ View Init ************ */
@@ -19,11 +18,13 @@ app.locals.pretty = true; // app.locals에 변수로 등록하면 ejs에서 바�
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+/* ************ Static Router ************ */
+app.use('/', express.static(path.join(__dirname, './public')));
+
 /* ************ Router Init ************ */
 const prdRouter = require('./routes/prd-router');
 const userRouter = require('./routes/user-router');
 
-app.use('/', express.static(path.join(__dirname, './public')));
 app.use('/prd', prdRouter);
 app.use('/user', userRouter);
 
