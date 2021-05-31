@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const error = require('http-errors');
 
 router.get('/login', (req, res, next) => {
 	// 로그인 화면
-	res.send('<h1>로그인 화면</h1>');
+	next(error(401, '인증에 실패하였습니다.'))
+	// res.send('<h1>로그인 화면</h1>');
 });
 
 router.post('/login', (req, res, next) => {

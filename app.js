@@ -28,12 +28,9 @@ app.use('/prd', prdRouter);
 app.use('/user', userRouter);
 
 /* ************ Error Router(예외처리) ************ */
-app.use((req, res, next) => {
-	// 경로를 못찾으면 도착
-	next(error(404, '요청하신 페이지를 찾을 수 없습니다.'));
-});
+const notFoundRouter = require('./routes/404-router');
+const errorRouter = require('./routes/500-router');
 
-app.use((err, req, res, next) => {
-	// 모든 에러의 종착점
-	res.json({ code: err.status, message: err.message });
-});
+app.use(notFoundRouter);
+app.use(errorRouter);
+
