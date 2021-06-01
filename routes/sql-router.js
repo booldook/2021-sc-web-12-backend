@@ -1,42 +1,25 @@
 const express = require('express');
 const router = express.Router();
+
+const error = require('http-errors');
 const mysql = require('mysql2');
-const connection = mysql.createConnection({
+
+const pool = mysql.createPool({
 	host: 'localhost',
 	user: 'shop',
 	password: '000000',
-	database: 'shop'
+	database: 'shop',
+	waitForConnections: true,
+	connectionLimit: 10,
+	queueLimit: 0
 });
 
-// READ
-router.get('/', (req, res, next) => {
-	let sql = 'SELECT * FROM product';
-	connection.query(sql, (err, r) => {
-		res.json(r);
+router.get('/list', (req, res, next) => {
+	pool.execute('select * from product', function(err, r) {
+		if(err) next(error(500, { code: err.code, message: err.sqlMessage }));
+		else res.json(r);
 	});
 });
-
-// CREATE
-// router.post('/', (req, res, next) => { // req.body
-router.get('/insert', (req, res, next) => {
-	let sql = 'INSERT INTO product SET prdname=?, price=?, content=?';
-	let values = ['잘나가 스마트폰2', 900000, '너무 잘나가는 스마트폰2'];
-	connection.query(sql, values, (err, r) => {
-		res.json(r);
-	});
-});
-
-// DELETE
-router.get('/remove/:id', (req, res, next) => {
-	let id = req.params.id;
-	let sql = 'DELETE FROM product WHERE id=?';
-	let values = [id];
-	connection.query(sql, values, (err, r) => {
-		res.json(r);
-	});
-});
-
-
 
 
 module.exports = router;
