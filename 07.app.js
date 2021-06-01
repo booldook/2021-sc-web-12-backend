@@ -1,4 +1,5 @@
-/* ************ 08.app.js [Multer 추가] ************ */
+/* ************ 07.app.js [데이터베이스 사용] ************ */
+// mysql2 | sequelize | mongoose
 
 /* ************ Require ************ */
 const express = require('express');
@@ -18,18 +19,17 @@ app.use(express.urlencoded({ extended: false }));
 
 /* ************ Static Router ************ */
 app.use('/', express.static(path.join(__dirname, './public')));
-app.use('/uploads', express.static(path.join(__dirname, './storages')));
 
 /* ************ Router Init ************ */
 const prdRouter = require('./routes/prd-router');
 const userRouter = require('./routes/user-router');
 const sqlRouter = require('./routes/sql-router');
-const uploadRouter = require('./routes/upload-router');
+const sqlRouterReview = require('./routes/sql-router-review');
 
 app.use('/prd', prdRouter);
 app.use('/user', userRouter);
 app.use('/sql', sqlRouter);
-app.use('/upload', uploadRouter);
+app.use('/sql2', sqlRouterReview);
 
 /* ************ Error Router ************ */
 const notFoundRouter = require('./routes/404-router');

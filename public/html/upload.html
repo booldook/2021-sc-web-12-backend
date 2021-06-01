@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>File Upload :: feat.multer</title>
+	<link rel="stylesheet" href="/css/all.min.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="title">
+				File Upload 테스트
+				<small>Express. multer모듈을 활용한 file upload</small>
+			</h1>
+		</div>
+		<form action="/upload/save" method="POST" enctype="multipart/form-data">
+			<!-- form은 전송데이터가 text/plain로 전송됨. 그래서 enctype="multipart/form-data" 기재 -->
+			<input type="text" name="title" class="form-control" placeholder="제목을 작성해 주세요.">
+			<input type="file" name="upfile" class="form-control-file my-2" placeholder="첨부파일을 등록하세요.">
+			<button class="btn btn-primary my-2">등록</button>
+		</form>
+	</div>
+</body>
+</html>
