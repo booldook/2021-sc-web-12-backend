@@ -4,8 +4,8 @@
 /* ************ Require ************ */
 const express = require('express');
 const app = express();
+require('dotenv').config();
 require('./modules/server-init')(app, 3000);
-
 const path = require('path');
 
 
@@ -39,4 +39,5 @@ const errorRouter = require('./routes/500-router');
 
 app.use(notFoundRouter);
 app.use(errorRouter);
+
 
