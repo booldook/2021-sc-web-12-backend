@@ -1,6 +1,6 @@
 module.exports = (err, req, res, next) => {
 	// 모든 에러의 종착점
-	console.log('===========ERROR==========');
+	// console.log('===========ERROR==========');
 	// res.json({ code: err.status, message: err.message });
 	const ejs = { 
 		status: err.status === 404 ? 404 : 500, 
