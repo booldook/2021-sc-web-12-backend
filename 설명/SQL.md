@@ -1,4 +1,15 @@
 # SQL 학습
+## 0. 용어설명
+- DB: Database : 데이터 저장소
+- DBMS: DataBase Management System : 데이터베이스 관리 시스템
+- RDBMS: Relational DataBase: 관계형 데이터베이스 - MySQL, Oracle, MSSQL ...
+- DBMS Client tool: mysql(cli), Heidi, Workbench
+- NoSQL: Not Only SQL : 데이터를 테이블에 저장하지 않고 json형태로 저장한다. - firebase, mongoDB ...
+- SQL: Structured Query Language : RDBMS에서 사용하는 언어
+- ORM : Object Relational Mapping : 객체 관계 매핑 - SQL(sequelize), NoSQL(Mongoose)
+- CLI Program: Command Line Interface Program - 까만창에서 쓰는 프로그램 
+  -> (firebase, git, npm, mysql, node, nodemon, supervisor ...)
+
 ## 1. Database
 ### database 명령어
 ```sql
@@ -45,10 +56,6 @@ DROP TABLE tablename;
 INSERT INTO users SET username='홍길동', userid='hong', userpw='1234';
 INSERT INTO users (username, userid, userpw) VALUES ('홍길순', 'hong2', '1234');
 
--- Read: SELECT
--- 제일 복잡하다. 차차 배워나가자.
-SELECT * FROM users;
-
 -- Update: UPDATE
 -- 조건절이 꼭 들어가야 한다(안그러면 박스구하러 가야한다)
 -- UPDATE 테이블명 SET 필드명1=값1, 필드명2=값2 WHERE id=1;
@@ -58,4 +65,26 @@ UPDATE users SET userpw='1234' WHERE id=1;
 -- 조건절이 꼭 들어가야 한다(안그러면 박스구하러 가야한다)
 -- DELETE FROM 테이블명 WHERE id=2;
 DELETE FROM users WHERE id=2;
+
+-- Read: SELECT
+-- 제일 복잡하다. 차차 배워나가자.
+SELECT * FROM employee; -- 모든 필드를 가져와
+SELECT id, eno... FROM employee; -- 작성한 필드만 가져와
+SELECT COUNT(id) FROM employee; -- 행의 갯수를 가져와
+SELECT * FROM employee ORDER BY id DESC; -- id 내림차순으로 가져와
+SELECT * FROM employee ORDER BY id ASC; -- id 오름차순으로 가져와
+SELECT * FROM employee WHERE id = 2; -- id = 2
+SELECT * FROM employee WHERE id > 2 ORDER BY id DESC; -- id > 2 큰놈을 내림차순으로 가져와
+SELECT * FROM pay WHERE pay >= 3000000 AND pay < 5000000 ORDER BY pay ASC;
+SELECT * FROM info WHERE tel='010'; -- tel이 010인 놈을 가져와. -> 데이터가 없다
+SELECT * FROM info WHERE tel LIKE '010'; -- tel이 010인 놈을 가져와(위와 같다) -> 데이터가 없다
+SELECT * FROM info WHERE tel LIKE '010%'; -- tel이 010으로 시작하는 놈을 가져와
+SELECT * FROM info WHERE tel LIKE '%0001'; -- tel이 0001로 끝나는 놈을 가져와
+SELECT * FROM info WHERE tel LIKE '%0000%'; -- tel이 0000을 포함하는 놈을 가져와
+SELECT * FROM pay WHERE pay >= 3000000 ORDER BY pay DESC, id ASC; -- pay가 3000000이상을 pay내림차순으로 정렬하고 pay가 같은놈이 있으면 거기서 id 오름차순으로 정렬
+SELECT * FROM pay WHERE pay >= 3000000 ORDER BY pay DESC, id DESC LIMIT 0, 3; -- 위의 결과에서 0번레코드로 부터 3개를 가져와 (LIMIT 시작레코드idx, 가져올 레코드 수)
+
+
+-- UPDATE, DELETE => WHERE절을 써야한다.
+-- SELECT => WHERE, ORDER, LIMIT 순으로 쓸 수 있다. => 원하는 조건을 추려서(WHERE) 정렬(ORDER)시킨 후 원하는 데이터(LIMIT)만 가져오기
 ```
