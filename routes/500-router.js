@@ -6,7 +6,7 @@ module.exports = (err, req, res, next) => {
 		status: err.status === 404 ? 404 : 500, 
 		message: err.code || err.message, 
 		description: err.description || err.message,
-		pageTitle: `ERROR ${err.status === 404 ? 404 : 500}`,
+		headTitle: `ERROR ${err.status === 404 ? 404 : 500}`,
 	}
 	res.render('error/error', ejs);
 };

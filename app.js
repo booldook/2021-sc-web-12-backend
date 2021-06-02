@@ -25,11 +25,13 @@ const prdRouter = require('./routes/prd-router');
 const userRouter = require('./routes/user-router');
 const sqlRouter = require('./routes/sql-router');
 const uploadRouter = require('./routes/upload-router');
+const gbookRouter = require('./routes/gbook-router');
 
 app.use('/prd', prdRouter);
 app.use('/user', userRouter);
 app.use('/sql', sqlRouter);
 app.use('/upload', uploadRouter);
+app.use('/gbook', gbookRouter);
 
 /* ************ Error Router ************ */
 const notFoundRouter = require('./routes/404-router');

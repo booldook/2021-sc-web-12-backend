@@ -59,11 +59,11 @@ app.use('/', express.static(path.join(__dirname, './public')));
 
 /* ************ Rounter Dynamic ************ */
 app.get('/event', (req, res, next) => {
-	res.render('event/event', { event, pageTitle: '이벤트 사이트' });
+	res.render('event/event', { event, headTitle: '이벤트 사이트', pageTitle: '이벤트 사이트' });
 });
 
 app.get('/gbook', (req, res, next) => {
-	res.render('gbook/gbook', {pageTitle: '방명록 서비스', gbook});
+	res.render('gbook/gbook', {headTitle: '방명록 서비스', pageTitle: '방명록 서비스', gbook});
 });
 
 app.post('/gbook/save', (req, res, next) => {
