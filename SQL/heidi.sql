@@ -43,3 +43,20 @@ SELECT * FROM info WHERE tel LIKE '%0000%'; -- tel이 0000을 포함하는 놈�
 
 SELECT * FROM pay WHERE pay >= 3000000 ORDER BY pay DESC, id DESC LIMIT 3, 3;
 
+SELECT 
+employee.*, info.id AS infoid, gender, age, tel 
+FROM employee 
+JOIN info ON employee.id = info.eid 
+WHERE info.tel LIKE '%0000%' 
+ORDER BY employee.id ASC 
+LIMIT 0, 3;
+
+SELECT 
+A.*, B.id AS infoid, gender, age, tel 
+FROM employee A 
+JOIN info B 
+ON A.id = B.eid 
+WHERE B.tel LIKE '%0000%' 
+ORDER BY A.id ASC 
+LIMIT 0, 3;
+

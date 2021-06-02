@@ -92,7 +92,6 @@ SELECT * FROM pay WHERE pay >= 3000000 ORDER BY pay DESC, id DESC LIMIT 0, 3; --
 ---
 ### record명령어(중급)
 
-
 ![SQL JOIN](./img/sql-join.png)
 
 ```sql
@@ -101,6 +100,31 @@ SELECT * FROM pay WHERE pay >= 3000000 ORDER BY pay DESC, id DESC LIMIT 0, 3; --
 -- 1. employee를 가져오는데 info를 붙여서(employee LEFT JOIN info) 가져와. 
 -- 2. employee의 id 와 info의 eid가 같은놈(ON employee.id = info.eid)을 가져와
 -- 3. 마찬가지로 WHERE, ORDER, LIMIT 다 쓸 수 있다.
-SELECT employee.*, info.* FROM employee LEFT JOIN info ON employee.id = info.eid;
-SELECT employee.*, info.* FROM employee LEFT JOIN info ON employee.id = info.eid WHERE info.tel LIKE '%0000%' ORDER BY employee.id ASC LIMIT 0, 3;
+SELECT employee.*, info.id AS infoid, info.gender, info.age, info.tel FROM employee JOIN info ON employee.id = info.eid;
+
+SELECT 
+employee.*, info.id AS infoid, info.gender, info.age, info.tel 
+FROM employee 
+JOIN info ON employee.id = info.eid 
+WHERE info.tel LIKE '%0000%' 
+ORDER BY employee.id ASC 
+LIMIT 0, 3;
+
+SELECT 
+A.*, B.id AS infoid, B.gender, B.age, B.tel 
+FROM employee A 
+JOIN info B 
+ON A.id = B.eid 
+WHERE B.tel LIKE '%0000%' 
+ORDER BY A.id ASC 
+LIMIT 0, 3;
+
+SELECT 
+A.*, B.id AS payid, pay, payAt  
+FROM employee A 
+JOIN pay B 
+ON A.id = B.eid 
+WHERE B.pay >= 3000000 
+ORDER BY A.id ASC 
+LIMIT 0, 10;
 ```
