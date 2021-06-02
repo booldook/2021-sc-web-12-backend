@@ -87,4 +87,20 @@ SELECT * FROM pay WHERE pay >= 3000000 ORDER BY pay DESC, id DESC LIMIT 0, 3; --
 
 -- UPDATE, DELETE => WHERE절을 써야한다.
 -- SELECT => WHERE, ORDER, LIMIT 순으로 쓸 수 있다. => 원하는 조건을 추려서(WHERE) 정렬(ORDER)시킨 후 원하는 데이터(LIMIT)만 가져오기
+
+```
+---
+### record명령어(중급)
+
+
+![SQL JOIN](./img/sql-join.png)
+
+```sql
+-- 두개의 테이블을 합쳐서 가져오기
+
+-- 1. employee를 가져오는데 info를 붙여서(employee LEFT JOIN info) 가져와. 
+-- 2. employee의 id 와 info의 eid가 같은놈(ON employee.id = info.eid)을 가져와
+-- 3. 마찬가지로 WHERE, ORDER, LIMIT 다 쓸 수 있다.
+SELECT employee.*, info.* FROM employee LEFT JOIN info ON employee.id = info.eid;
+SELECT employee.*, info.* FROM employee LEFT JOIN info ON employee.id = info.eid WHERE info.tel LIKE '%0000%' ORDER BY employee.id ASC LIMIT 0, 3;
 ```
